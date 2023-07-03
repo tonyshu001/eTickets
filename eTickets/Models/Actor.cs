@@ -10,5 +10,7 @@ namespace eTickets.Models
         public string FullName { get; set; }
         public string Bio { get; set; }
 
+        //relationships
+        public List<Actor_Movie> Actors_Movies { get; set; }
     }
 }
