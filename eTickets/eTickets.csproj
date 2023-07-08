@@ -7,6 +7,41 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\NewFolder1\**" />
+    <Compile Remove="Data\NewFolder2\**" />
+    <Compile Remove="Data\NewFolder3\**" />
+    <Compile Remove="Data\NewFolder4\**" />
+    <Compile Remove="Data\NewFolder5\**" />
+    <Compile Remove="Data\NewFolder6\**" />
+    <Compile Remove="Data\NewFolder7\**" />
+    <Compile Remove="Data\NewFolder8\**" />
+    <Content Remove="Data\NewFolder1\**" />
+    <Content Remove="Data\NewFolder2\**" />
+    <Content Remove="Data\NewFolder3\**" />
+    <Content Remove="Data\NewFolder4\**" />
+    <Content Remove="Data\NewFolder5\**" />
+    <Content Remove="Data\NewFolder6\**" />
+    <Content Remove="Data\NewFolder7\**" />
+    <Content Remove="Data\NewFolder8\**" />
+    <EmbeddedResource Remove="Data\NewFolder1\**" />
+    <EmbeddedResource Remove="Data\NewFolder2\**" />
+    <EmbeddedResource Remove="Data\NewFolder3\**" />
+    <EmbeddedResource Remove="Data\NewFolder4\**" />
+    <EmbeddedResource Remove="Data\NewFolder5\**" />
+    <EmbeddedResource Remove="Data\NewFolder6\**" />
+    <EmbeddedResource Remove="Data\NewFolder7\**" />
+    <EmbeddedResource Remove="Data\NewFolder8\**" />
+    <None Remove="Data\NewFolder1\**" />
+    <None Remove="Data\NewFolder2\**" />
+    <None Remove="Data\NewFolder3\**" />
+    <None Remove="Data\NewFolder4\**" />
+    <None Remove="Data\NewFolder5\**" />
+    <None Remove="Data\NewFolder6\**" />
+    <None Remove="Data\NewFolder7\**" />
+    <None Remove="Data\NewFolder8\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
