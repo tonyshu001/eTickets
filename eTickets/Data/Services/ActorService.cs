@@ -24,17 +24,6 @@ namespace eTickets.Data.Services
             await _Context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Actor>> GetAllAsync()
-        {
-            var result = await _Context.Actors.ToListAsync();
-            return result;
-        }
-
-        public async Task<Actor> GetByIdAsync(int id)
-        {
-            var result = await _Context.Actors.FirstOrDefaultAsync(n => n.Id == id);
-            return result;
-        }
 
         public async Task<Actor> UpdateAsync(int id, Actor actor)
         {
