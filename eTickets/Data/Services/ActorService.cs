@@ -17,9 +17,11 @@ namespace eTickets.Data.Services
             await _Context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _Context.Actors.FirstOrDefaultAsync(x => x.Id == id);
+            _Context.Actors.Remove(result);
+            await _Context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Actor>> GetAllAsync()
