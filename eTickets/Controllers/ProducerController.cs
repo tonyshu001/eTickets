@@ -19,5 +19,17 @@ namespace eTickets.Controllers
             var AllProducers = await _service.GetAllAsync();
             return View(AllProducers);
         }
+
+        //Get: producer/details/id
+        public async Task<IActionResult> Details(int id)
+        {
+            var producerDetails = await _service.GetByIdAsync(id);
+            if (producerDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(producerDetails);
+        }
     }
 }
