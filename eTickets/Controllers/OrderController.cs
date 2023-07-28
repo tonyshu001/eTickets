@@ -18,12 +18,27 @@ namespace eTickets.Controllers
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
-            var responce = new ShoppingCartVM()
+
+            var response = new ShoppingCartVM()
             {
                 ShoppingCart = _shoppingCart,
-                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal(),
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
             };
-            return View(responce);
+
+            return View(response);
+        }
+
+
+
+        public async Task<RedirectToActionResult> AddItemToShoppingCart(int id)
+        {
+            var item = await _movieService.GetMovieByIdAsync(id);
+
+            if (item != null)
+            {
+                _shoppingCart.AddItemToCart(item);
+            }
+            return RedirectToAction(nameof(ShoppingCart));
         }
     }
 }

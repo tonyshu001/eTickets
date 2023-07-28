@@ -16,18 +16,15 @@ namespace eTickets.Data.Cart
             _context = context;
         }
 
-        public static ShoppingCart GetShoppingCart(IServiceProvider serviceProvider)
+        public static ShoppingCart GetShoppingCart(IServiceProvider services)
         {
-            ISession session = serviceProvider.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var context = services.GetService<AppDbContext>();
 
-            var context = serviceProvider.GetService<AppDbContext>();
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
-            session.SetString("cartId",cartId);
-            return new ShoppingCart(context)
-            {
-                ShoppingCartId = cartId,
-            };
+            session.SetString("CartId", cartId);
 
+            return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
 
         public void AddItemToCart(Movie movie)
