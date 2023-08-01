@@ -26,7 +26,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-gear"></i>Management
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -50,6 +50,21 @@
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
+
+                    @*User profile section*@
+                    <div class="dropdown">
+                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-person-badge"></i> Hello User
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="profile-btn">
+                            <li>
+                                <a class="dropdown-item" asp-controller="Order" asp-action="Index">
+                                    <i class="bi bi-list"></i>Orders
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
             </div>
