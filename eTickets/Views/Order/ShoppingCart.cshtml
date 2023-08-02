@@ -31,7 +31,7 @@
                         <td class="align-middle">@((item.Amount * item.Movie.Price).ToString("c"))</td>
                         <td class="align-middle">
                             <a class="text-danger" asp-controller="Order" asp-action="RemoveItemFromShoppingCart"
-                            asp-route-id="@item.Movie.Id">
+                               asp-route-id="@item.Movie.Id">
                                 <i class="bi bi-cart-dash"></i>
                             </a>
 
@@ -59,9 +59,13 @@
 
         <div class="text-center">
             <div class="btn-group">
-                <a class="btn btn-outline-primary" asp-controller="Order" asp-action="CompleteOrder">
-                    Complete order
-                </a>
+                @*<a class="btn btn-outline-primary" asp-controller="Order" asp-action="CompleteOrder">
+                Complete order
+                </a>*@
+                <div id="paypal-btn">
+                </div>
+
+                <span style="padding:5px"></span>
 
                 <a class="btn btn-outline-success" asp-controller="Movie" asp-action="Index">
                     Add more items
@@ -72,3 +76,34 @@
 
     </div>
 </div>
+@section Scripts{
+    <script src="https://www.paypalobjects.com/api/checkout.js"> </script>
+    <script>
+        paypal.Button.render({
+            //Configure the environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AakJ3do0NYydGCWCaHWoC7xTqMJiai8xjyH0f4DcXaGJAtBPlCTFt96OJlVq3GvLirevLKaOfGENM1Zn'
+            },
+
+            //Customize button
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill'
+            },
+            commit: true,
+
+            //Set up a payment
+            payment: function (data, actions) {
+                console.log("payment set up")
+            },
+            //Execute the payment
+            onAuthorize: function (data, actions) {
+                console.log("payment set up")
+            }
+
+        }, '#paypal-btn');
+    </script>
+}
