@@ -1,6 +1,9 @@
 using eTickets.Data;
 using eTickets.Data.Cart;
 using eTickets.Data.Services;
+using eTickets.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,9 +19,18 @@ builder.Services.AddScoped<IProducerService, ProducerService>();
 builder.Services.AddScoped<ICinemaService, CinemaService>();
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
-builder.Services.AddSession();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+
+//Authentication and authorization
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,6 +46,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+
+//Authentication and authorization
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseAuthorization();
 
