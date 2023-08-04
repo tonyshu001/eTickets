@@ -26,7 +26,7 @@ namespace eTickets.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login (LoginVM loginVM)
+        public async Task<IActionResult> Login(LoginVM loginVM)
         {
             if (!ModelState.IsValid)
             {
@@ -34,7 +34,7 @@ namespace eTickets.Controllers
             }
 
             var user = await _userManager.FindByEmailAsync(loginVM.EmailAddress);
-            if(user != null)
+            if (user != null)
             {
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
                 if (passwordCheck)
@@ -53,6 +53,12 @@ namespace eTickets.Controllers
 
             TempData["Error"] = "Wrong credentials. Please try again";
             return View(loginVM);
+        }
+
+        public IActionResult Register()
+        {
+            var response = new RegisterVM();
+            return View(response);
         }
     }
 }
