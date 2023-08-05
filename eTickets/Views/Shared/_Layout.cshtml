@@ -24,18 +24,23 @@
                             <a class="nav-link text-dark" asp-controller="Movie" asp-action="Index"><i class="bi bi-film"></i>Movies</a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="bi bi-gear"></i>Management
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="Cinema" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinema</a>
-                                <a class="dropdown-item" asp-controller="Producer" asp-action="Index"><i class="bi bi-headset"></i> Producer</a>
-                                <a class="dropdown-item" asp-controller="Actor" asp-action="Index"><i class="bi bi-person-square"></i> Actor</a>
 
-                            </div>
-                        </li>
+                        @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-gear"></i>Management
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-controller="Cinema" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinema</a>
+                                    <a class="dropdown-item" asp-controller="Producer" asp-action="Index"><i class="bi bi-headset"></i> Producer</a>
+                                    <a class="dropdown-item" asp-controller="Actor" asp-action="Index"><i class="bi bi-person-square"></i> Actor</a>
+
+                                </div>
+                            </li>
+                        }
+                        
                     </ul>
 
                     <form class="form-inline" asp-controller="Movie" asp-action="Filter" style="padding-right: 25px;">
