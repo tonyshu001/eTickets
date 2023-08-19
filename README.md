@@ -44,7 +44,7 @@ The easiest way to do it is to clone and run the project using Visual Studio and
    ![image](https://github.com/tonyshu001/eTickets/assets/87597364/14a6419b-6205-404e-a628-1f9f9d1bcfd6)
    - The default URL and port number is `https://localhost:44325/Movie`, you can change it based on your preferrence.
    - Press `F5` or click the "Start" button in the toolbar to run the project.
-   - Visual Studio will automatically launch IIS Express and open your project in a web browser.
+   - Visual Studio will automatically launch IIS Express and open the project in a web browser.
 
 ## Notes
 
